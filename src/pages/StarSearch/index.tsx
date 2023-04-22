@@ -68,7 +68,7 @@ const StarList= () => {
                     cardBordered
                     request={async (params = {}) => {
                         return axios({
-                            url:'http://localhost:8080/liststars',
+                            url:'http://124.223.27.177:24000/liststars',
                             method:'POST',
                             data:params
                         }).then(r=>{
