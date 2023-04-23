@@ -1,9 +1,7 @@
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import {PageContainer, ProCard, ProTable} from '@ant-design/pro-components';
-import { Space, Tag } from 'antd';
 import { useRef } from 'react';
 import axios from "axios";
-import {css} from "@emotion/react";
 import StarImgInfo from "./StarImgInfo.tsx";
 
 type GithubIssueItem = {

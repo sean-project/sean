@@ -2,7 +2,7 @@
 
 import StarImgInfo from "../StarSearch/StarImgInfo.tsx";
 import {Col, Descriptions, Divider, Row, Statistic} from "antd";
-import * as dayjs from "dayjs";
+import  dayjs from "dayjs";
 import {css} from "@emotion/react";
 
 const StarBaseInfo = () => {

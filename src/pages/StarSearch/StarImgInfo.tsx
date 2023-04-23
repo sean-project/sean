@@ -2,7 +2,7 @@ import {css} from "@emotion/react";
 import {Space, Tag} from "antd";
 import {FC} from "react";
 import {ManOutlined, WomanOutlined} from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import  dayjs from "dayjs";
 import {theme} from "antd";
 import {useNavigate} from "react-router-dom";
 
