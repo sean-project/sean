@@ -11,7 +11,7 @@ const StarImgInfo:FC<any> = ({item}) => {
     const token = useToken()
     const nav = useNavigate()
   return <div  css={css`display: flex`} onClick={()=>{
-      nav('/mainbox/stardetail')
+      nav(`/star/${item.starID}`)
   }}>
       <img css={css`
         width: 70px;

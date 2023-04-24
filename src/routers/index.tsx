@@ -1,16 +1,18 @@
-
-import MainBox from '../layouts/MainBox.tsx';
 import StarList from "../pages/StarSearch";
 import StarDetail from "../pages/StarDetail";
+import StarVolume from "../pages/StarVolume";
 const router = [
     {
-        path: '/MainBox',
+        path: '/',
         children:[{
-            path: 'StarList',
+            path: 'star/search',
             element: <StarList />,
         },{
-            path: 'StarDetail',
+            path: 'star/:starId',
             element: <StarDetail />,
+        },{
+            path: 'star/volume',
+            element: <StarVolume />,
         }]
     }
 ];

@@ -21,6 +21,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
         title: '艺名',
         dataIndex: 'starName',
         render(i,_){
+            console.log(i)
             return <StarImgInfo item={_}/>
         }
     },
@@ -63,10 +64,9 @@ const StarList= () => {
                 <ProTable<GithubIssueItem>
                     columns={columns}
                     actionRef={actionRef}
-                    cardBordered
                     request={async (params = {}) => {
                         return axios({
-                            url:'http://124.223.27.177:24000/liststars',
+                            url:'/api/liststars',
                             method:'POST',
                             data:params
                         }).then(r=>{
@@ -77,42 +77,15 @@ const StarList= () => {
                             }
                         })
                     }}
-                    editable={{
-                        type: 'multiple',
-                    }}
-                    columnsState={{
-                        persistenceKey: 'pro-table-singe-demos',
-                        persistenceType: 'localStorage',
-                        onChange(value) {
-                            console.log('value: ', value);
-                        },
-                    }}
                     rowKey="id"
                     search={{
                         labelWidth: 'auto',
                         defaultCollapsed: false,
                     }}
-                    options={{
-                        setting: {
-                            listsHeight: 400,
-                        },
-                    }}
-                    form={{
-                        // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
-                        syncToUrl: (values, type) => {
-                            if (type === 'get') {
-                                return {
-                                    ...values,
-                                    created_at: [values.startTime, values.endTime],
-                                };
-                            }
-                            return values;
-                        },
-                    }}
                     pagination={{
+                        defaultPageSize:10,
                         onChange: (page) => console.log(page),
                     }}
-                    dateFormatter="string"
                 />
             </ProCard>
         </PageContainer>

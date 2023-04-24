@@ -1,27 +1,22 @@
-import {
-    GithubFilled,
-    InfoCircleFilled,
-    PlusCircleFilled,
-    QuestionCircleFilled,
-    SearchOutlined,
-} from '@ant-design/icons';
-import type { ProSettings } from '@ant-design/pro-components';
-import { ProLayout, SettingDrawer } from '@ant-design/pro-components';
-import { Input } from 'antd';
-import { useState } from 'react';
+import { ProLayout } from '@ant-design/pro-components';
+import {useEffect, useState} from 'react';
 import defaultProps from './_defaultProps';
-import {useRoutes} from "react-router-dom";
+import {useLocation, useNavigate, useRoutes} from "react-router-dom";
 import routerConfig from '../routers';
-// import StarSearch from "../pages/StarSearch";
 
 export default () => {
     const routesContent = useRoutes(routerConfig);
-
+    const nav = useNavigate()
+    const loc = useLocation()
     const [pathname, setPathname] = useState('/list/sub-page/sub-sub-page1');
-
+    useEffect(()=>{
+        setPathname(loc.pathname || '/welcome');
+        if (loc.pathname === '/star'){
+            nav('/star/search')
+        }
+    },[loc.pathname])
     return (
         <div
-            id="test-pro-layout"
             style={{
                 height: '100vh',
             }}
@@ -31,15 +26,21 @@ export default () => {
                 location={{
                     pathname,
                 }}
+                menuItemRender={(item, dom) => (
+                    <div
+                        onClick={() => {
+                            nav(item.path || '/welcome')
+                        }}
+                    >
+                        {dom}
+                    </div>
+                )}
                 title={'Sean'}
                 avatarProps={{
                     src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
                     size: 'small',
                     title: (
                         <div
-                            style={{
-                                color: '#dfdfdf',
-                            }}
                         >
                             张温柔
                         </div>
